@@ -1,0 +1,54 @@
+/* COSMIC EDITION — independent, low-contrast star field, always behind the content. */
+#sky-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;display:block;opacity:1}
+#main,.site-footer{position:relative;z-index:1}
+/* The banner and artwork must stay clear; stars remain behind text rather than on it. */
+.hero{isolation:isolate}
+.hero .wrap{position:relative;z-index:2}
+.hero .hero-noise{opacity:.12}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 75% 40%,rgba(110,151,94,.10),transparent 43%),radial-gradient(circle at 15% 25%,rgba(50,71,83,.14),transparent 52%)}
+body.light .hero:after{background:radial-gradient(circle at 75% 40%,rgba(108,155,65,.12),transparent 49%)}
+/* Astral interaction dock. Real controls; not a decorative overlay. */
+.sky-dock{position:fixed;z-index:76;left:24px;bottom:22px;display:flex;align-items:center;gap:8px;padding:7px 9px 7px 7px;min-height:55px;border:1px solid rgba(197,222,169,.26);border-radius:17px;background:rgba(25,32,27,.83);box-shadow:0 10px 34px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:#f1f0e9;transition:border-color .25s,background .25s,transform .3s,opacity .25s}
+.sky-dock:hover{border-color:rgba(214,251,104,.65);transform:translateY(-2px)}
+.sky-launch{display:grid;place-items:center;flex-shrink:0;width:42px;height:42px;border:0;border-radius:12px;background:#d7fb68;color:#21261e;font-size:22px;cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .25s}
+.sky-launch:hover{transform:rotate(-13deg) scale(1.06);box-shadow:0 0 24px rgba(215,251,104,.38)}
+.sky-launch:active{transform:scale(.92)}
+.sky-info{display:flex;flex-direction:column;align-items:flex-start;min-width:111px;gap:2px}
+.sky-title{font:700 10px/1.2 var(--display);letter-spacing:.09em;white-space:nowrap}
+.sky-subtitle{font:500 9px/1.3 var(--sans);color:#b5bdb3;white-space:nowrap}
+.sky-count{color:#d7fb68;font-variant-numeric:tabular-nums}
+.sky-divider{height:25px;width:1px;background:rgba(197,222,169,.18)}
+.sky-visibility{background:transparent;color:#d7fb68;border:0;border-radius:9px;min-width:27px;height:35px;cursor:pointer;display:grid;place-items:center;font-size:16px;transition:background .2s}
+.sky-visibility:hover{background:rgba(255,255,255,.1)}
+.sky-dock[data-sky-visible="false"] .sky-visibility{color:#a4a9a2}
+body.light .sky-dock{background:rgba(30,38,32,.91)}
+.sky-dock:focus-within{outline:1px solid rgba(215,251,104,.7);outline-offset:3px}
+.sky-dock button:focus-visible{outline:2px solid #f3ffc4;outline-offset:3px}
+/* Brief text reacts to each star sent to the sky */
+.sky-toast{position:fixed;z-index:76;left:25px;bottom:93px;max-width:min(330px,calc(100vw - 50px));padding:10px 15px;border-radius:10px;border:1px solid rgba(215,251,104,.3);color:#e8ffbc;background:rgba(25,32,27,.92);box-shadow:0 8px 25px rgba(0,0,0,.2);font:600 11px/1.45 var(--display);letter-spacing:.03em;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.sky-toast.is-visible{opacity:1;transform:translateY(0)}
+.sky-scroll-cue{position:absolute;z-index:7;top:9px;left:50%;transform:translateX(-50%);display:flex;gap:6px;align-items:center;white-space:nowrap;font:600 9px/1.4 var(--display);letter-spacing:.16em;color:var(--muted);text-transform:uppercase;opacity:.7;pointer-events:none}
+.sky-scroll-cue span{color:var(--lime)}
+/* Tiny orbit indicator under the headline that responds to sky launch. */
+.sky-orbit-mark{position:relative;display:inline-block;width:24px;height:24px;border-radius:50%;border:1px solid color-mix(in srgb,var(--lime) 55%,transparent);margin-left:14px;vertical-align:middle;opacity:.7}
+.sky-orbit-mark:before{content:'✦';color:var(--lime);position:absolute;left:7px;top:2px;font-size:10px}
+.sky-orbit-mark:after{content:'';position:absolute;inset:-5px;border:1px dashed color-mix(in srgb,var(--lime) 30%,transparent);border-radius:50%;animation:sky-orbit-spin 18s linear infinite}
+@keyframes sky-orbit-spin{to{transform:rotate(360deg)}}
+body.motion-off .sky-dock{opacity:.8}
+body.motion-off .sky-toast{display:none}
+@media(max-width:900px){.sky-scroll-cue{display:none}}
+@media(max-width:650px){.sky-dock{left:13px;bottom:14px;min-height:46px;border-radius:13px;padding:5px;gap:5px}.sky-launch{width:38px;height:38px;font-size:21px;border-radius:10px}.sky-info{min-width:auto;gap:2px;padding:0 2px}.sky-title{font-size:9px}.sky-subtitle{font-size:8px}.sky-visibility{min-width:27px}.sky-toast{left:13px;bottom:73px}.sky-scroll-cue{display:none}}
+@media(prefers-reduced-motion:reduce){.sky-orbit-mark:after{animation:none!important}.sky-toast,.sky-dock,.sky-launch{transition:none!important}}
+
+/* Place sky controls in the hero, instead of hiding project content with a fixed dock. */
+.sky-dock{position:absolute;top:12px;right:0;bottom:auto;left:auto;z-index:14}
+.sky-toast{position:absolute;top:76px;right:0;bottom:auto;left:auto;z-index:14}
+@media(max-width:650px){
+  .sky-dock{position:absolute;top:12px;right:0;bottom:auto;left:auto;width:auto;min-height:45px;height:45px;padding:4px;overflow:visible;gap:2px}
+  .sky-dock .sky-info,.sky-dock .sky-divider{display:none}
+  .sky-dock .sky-launch{width:35px;height:35px;border-radius:9px}
+  .sky-dock .sky-visibility{width:30px;min-width:30px;height:35px}
+  .sky-toast{position:absolute;top:66px;left:auto;right:0;bottom:auto;max-width:238px}
+}
+
+.sky-launch:disabled{opacity:.55;filter:grayscale(1);cursor:not-allowed;box-shadow:none}

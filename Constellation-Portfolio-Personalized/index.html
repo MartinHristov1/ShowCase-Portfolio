@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#171917" />
+  <meta name="description" content="Martin Hristov — UI/UX designer and creative developer. Explore projects in UI/UX, development, and an interactive Virtual Classroom prototype. Available for a graduation internship." />
+  <title>Martin Hristov — Design, made human.</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="motion.css" />
+  <link rel="stylesheet" href="sky.css" />
+  <link rel="stylesheet" href="personal.css" />
+  <script defer src="site-data.js"></script>
+  <script defer src="script.js"></script>
+  <script defer src="motion.js"></script>
+  <script defer src="sky.js"></script>
+  <script defer src="contact.js"></script>
+</head>
+<body>
+  <canvas id="sky-canvas" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="page-progress" aria-hidden="true"></div>
+  <header class="site-header" id="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#/" aria-label="Martin Hristov, homepage"><span class="brand-square">m<span class="brand-star">✳</span></span><span class="brand-label">MARTIN<br>HRISTOV<span class="brand-period">.</span></span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a data-nav="work" href="#/work">Work <span class="nav-count">(06)</span></a>
+        <a data-nav="about" href="#/about">About</a>
+        <a data-nav="contact" href="#/contact">Contact</a>
+      </nav>
+      <div class="header-right"><span class="location-tag"><span class="live-dot"></span> Eindhoven, NL <span class="local-clock" id="local-clock" aria-label="Current Eindhoven local time"></span></span><button id="motion-toggle" class="motion-toggle" type="button" aria-label="Turn animations off" aria-pressed="true" title="Toggle motion">✳</button><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">◐</button><button id="mobile-toggle" class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><span></span><span></span></button></div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#/work">Work ↗</a><a href="#/about">About ↗</a><a href="#/contact">Contact ↗</a></nav>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="site-footer" id="site-footer"><div class="wrap footer-inner"><a class="footer-brand" href="#/">MH<span>✳</span></a><span>Designed & built by Martin Hristov © <span id="year">2026</span></span><div><a href="#/">Back to top ↑</a></div></div></footer>
+</body>
+</html>
